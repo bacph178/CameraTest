@@ -12,14 +12,25 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        println("Camera is ")
+        if isCameraAvailable() == false {
+            print("not")
+        }
+        
+        println("avaiable")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
+    /*
+        kiểm tra tính sẵn sàng của các resource
+        .Camera có camera hay không
+        .PhotoLibrary có sử dụng thư viện ảnh được không
+        .SavedPhotoAlbum có Camera Roll trong thư mục Photo được không
+    */
+    func isCameraAvailable() -> Bool {
+        return UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary)
+    }
 }
 
